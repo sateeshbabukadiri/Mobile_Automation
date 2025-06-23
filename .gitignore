@@ -4,13 +4,53 @@ target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
+.idea/
 *.iml
+*.iws
+out/
+
+# MacOS
+.DS_Store
+
+# Logs
+*.log
+
+# Compiled class files
+*.class
+
+# Gradle
+.gradle/
+build/
+
+# Test Reports
+allure-results/
+allure-report/
+test-output/
+
+# JetBrains
 *.ipr
+
+# Environment or config files
+.env
+*.local
+
+# Coverage reports
+coverage/
+jacoco*.exec
+
+# Temporary files
+*.swp
+*.bak
+*.tmp
+
+# System Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Git
+*.orig
+
 
 ### Eclipse ###
 .apt_generated
@@ -27,12 +67,8 @@ target/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
 ### VS Code ###
 .vscode/
-
-### Mac OS ###
-.DS_Store
