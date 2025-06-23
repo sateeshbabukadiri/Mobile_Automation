@@ -1,74 +1,42 @@
+# ========== BUILD ==========
 target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+.gradle/
+build/
 
-### IntelliJ IDEA ###
+# Keep Maven wrapper JAR (used in build automation)
+!.mvn/wrapper/maven-wrapper.jar
+
+# ========== IDEs ==========
+# IntelliJ
 .idea/
 *.iml
 *.iws
 out/
-
-# MacOS
-.DS_Store
-
-# Logs
-*.log
-
-# Compiled class files
-*.class
-
-# Gradle
-.gradle/
-build/
-
-# Test Reports
-allure-results/
-allure-report/
-test-output/
-
-# JetBrains
 *.ipr
 
-# Environment or config files
-.env
-*.local
+# VS Code
+.vscode/
 
-# Coverage reports
-coverage/
-jacoco*.exec
-
-# Temporary files
+# ========== LOGS & TEMP ==========
+*.log
 *.swp
 *.bak
 *.tmp
 
-# System Files
+# ========== TESTING & REPORTS ==========
+allure-results/
+allure-report/
+test-output/
+coverage/
+jacoco*.exec
+
+# ========== SYSTEM ==========
+.DS_Store
 Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-# Git
+# ========== ENV & GIT ==========
+.env
+*.local
 *.orig
-
-
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
-.vscode/
