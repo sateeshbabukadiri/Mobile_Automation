@@ -1,0 +1,21 @@
+{
+  "Android": {
+    "platformName": "Android",
+    "platformVersion": "13.0",
+    "udid": "RFCN10747YE",
+    "deviceName": "SM-G981W",
+    "automationName": "UiAutomator2",
+    "appPackage": "ca.bell.selfserve.mybellmobile",
+    "appActivity": "ca.bell.selfserve.mybellmobile/.ui.splash.view.SplashActivity",
+    "noReset": "false"
+  },
+  "iOS": {
+    "platformName": "iOS",
+    "platformVersion": "14.0",
+    "udid": "00008120-001C301A3450A01E",
+    "deviceName": "iPhone Simulator",
+    "bundleId": "ca.bell.selfserve.mybellmobile",
+    "updatedWDABundleId": "com.SateeshKadiri.WebDriverAgentRunner",
+    "automationName": "XCUITest"
+  }
+}
