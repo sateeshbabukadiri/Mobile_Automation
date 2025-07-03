@@ -22,7 +22,6 @@ This mobile automation testing framework is designed for automating test cases f
 - TestNG
 - Log4j
 - ExtentReports/ Allure reports
--
 
 ### Setup Instructions
 1. **Install HomeBrew - Open your Mac terminal and enter the below command**
