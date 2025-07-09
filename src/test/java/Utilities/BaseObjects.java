@@ -6,10 +6,7 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -39,8 +36,8 @@ public class BaseObjects {
         }
     }
 
-    public WebElement waitForElementVisible(WebElement element) {
-        return wait.until(ExpectedConditions.visibilityOf(element));
+    public void waitForElementVisible(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     public WebElement waitForElement(WebElement element, int timeoutInSeconds) {
@@ -87,6 +84,16 @@ public class BaseObjects {
     public static void logMessage(String status, String message) {
         log.info("[" + status.toUpperCase() + "] " + message);
         Allure.step("[" + status.toUpperCase() + "] " + message);
+        if (status.equalsIgnoreCase("fail") || status.equalsIgnoreCase("warn")) {
+            captureScreenshot();
+            getPageSource();
+        }
+    }
+
+    public static void logMessage(String status, Throwable t) {
+        String message = "[" + status.toUpperCase() + "] Exception: " + t.getMessage();
+        log.error(message, t);
+        Allure.step(message);
         if (status.equalsIgnoreCase("fail") || status.equalsIgnoreCase("warn")) {
             captureScreenshot();
             getPageSource();
