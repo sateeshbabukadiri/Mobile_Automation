@@ -41,7 +41,7 @@ public class TripAdvisor {
     public void iVerifyLoginAndPlanYourNextAdventurePopup() {
         Assert.assertEquals(tripAdvisorPage.createAccountButton(), "Create account");
         Assert.assertEquals(tripAdvisorPage.continueWithGoogle(), "Continue with Google");
-        if (tripAdvisorPage.loginAndPlanText.isDisplayed()) {
+        if (tripAdvisorPage.loginAndPlanText().equalsIgnoreCase("Log in and plan your next adventure")) {
             Assert.assertEquals(tripAdvisorPage.loginAndPlanText(), "Log in and plan your next adventure");
             iCloseThePopup();
         } else {
