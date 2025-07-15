@@ -2,6 +2,7 @@ package StepDefinitions;
 
 
 import Pages.TripAdvisorPage;
+import Pages.TripMainPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -23,6 +24,7 @@ public class TripAdvisor {
     }
 
     TripAdvisorPage tripAdvisorPage = new TripAdvisorPage();
+    TripMainPage tripMainPage = new TripMainPage();
 
 
     @Given("I click on Cancel button if google popup appears")
@@ -39,7 +41,7 @@ public class TripAdvisor {
     public void iVerifyLoginAndPlanYourNextAdventurePopup() {
         Assert.assertEquals(tripAdvisorPage.createAccountButton(), "Create account");
         Assert.assertEquals(tripAdvisorPage.continueWithGoogle(), "Continue with Google");
-        if (tripAdvisorPage.loginAndPlanText().equalsIgnoreCase("Log in and plan your next adventure")) {
+        if (tripAdvisorPage.loginAndPlanText.isDisplayed()) {
             Assert.assertEquals(tripAdvisorPage.loginAndPlanText(), "Log in and plan your next adventure");
             iCloseThePopup();
         } else {
@@ -66,5 +68,26 @@ public class TripAdvisor {
     public void iTapOnMaybeLaterButton(){
        tripAdvisorPage.tapMayBeLaterButton();
     }
+
+    @And ("I land on main page")
+    public void iLandOnMainPage(){
+        iClickOnGoogleCancelButton();
+        iVerifyLoginAndPlanYourNextAdventurePopup();
+        iVerifyPushNotificationPage();
+        iTapOnMaybeLaterButton();
+        Assert.assertEquals(tripMainPage.mainPageTitle(),"Where to?");
+    }
+
+    @And ("I verify all tabs are visible")
+    public void iVerifyAllTabs(){
+        Assert.assertEquals(tripMainPage.homeTabText(),"Home");
+        Assert.assertEquals(tripMainPage.searchTabText(),"Search");
+        Assert.assertEquals(tripMainPage.reviewTabText(),"Review");
+        Assert.assertEquals(tripMainPage.accountTabText(),"Account");
+        Assert.assertEquals(tripMainPage.tripsTabText(),"Trips");
+    }
+
+
+
 
 }

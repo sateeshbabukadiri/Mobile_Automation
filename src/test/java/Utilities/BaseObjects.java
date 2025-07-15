@@ -1,6 +1,7 @@
 package Utilities;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
@@ -113,5 +114,10 @@ public class BaseObjects {
             log.warn("Failed to get page source: " + e.getMessage());
             return "Failed to capture page source.";
         }
+    }
+
+
+    public void SwipeUp(){
+
     }
 }

@@ -22,7 +22,7 @@ public class LoginSteps extends BaseObjects {
     @When("the privacy notice screen is displayed")
     public void privacyNoticeScreenIsDisplayed() {
      privacyNoticePage.isPrivacyNoticeDisplayed();
-     Assert.assertEquals(privacyNoticePage.privacyNoticeText.getText(),"\nPrivacy notice");
+     Assert.assertEquals(privacyNoticePage.privacyNoticeText.getText(),"Privacy notice");
     }
 
     @Then ("I tap on accept button")
