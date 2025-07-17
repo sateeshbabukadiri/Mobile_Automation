@@ -1,7 +1,6 @@
-package Runners;
+package runners;
 
 import StepDefinitions.BaseStepDef;
-import Utilities.BaseObjects;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.tagexpressions.TagExpressionParser;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
@@ -9,16 +8,14 @@ import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.PickleWrapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.testng.ITestContext;
 import org.testng.annotations.*;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import static org.testng.internal.Utils.log;
 
 @CucumberOptions(
-        features = "src/test/java/Features",
+        features = "src/test/resources/features",
         glue = {"StepDefinitions"},
         plugin = {
                 "pretty",

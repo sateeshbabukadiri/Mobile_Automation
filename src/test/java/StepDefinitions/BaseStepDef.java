@@ -1,4 +1,4 @@
-package StepDefinitions;
+package stepdefinitions;
 
 import Runners.TestRunner;
 import Utilities.AppDriver;

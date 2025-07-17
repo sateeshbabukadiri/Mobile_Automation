@@ -1,4 +1,4 @@
-package StepDefinitions;
+package stepdefinitions;
 
 import Utilities.BaseObjects;
 import io.cucumber.java.en.Given;

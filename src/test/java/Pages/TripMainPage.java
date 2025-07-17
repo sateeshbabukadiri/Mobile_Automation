@@ -1,4 +1,4 @@
-package Pages;
+package pages;
 
 import Utilities.BaseObjects;
 import io.appium.java_client.pagefactory.AndroidFindBy;

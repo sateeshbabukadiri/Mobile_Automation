@@ -1,4 +1,4 @@
-package Utilities;
+package utilities;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import io.appium.java_client.AppiumDriver;
