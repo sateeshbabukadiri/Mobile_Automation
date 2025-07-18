@@ -1,6 +1,6 @@
 package listeners;
 
-import Utilities.AppDriver;
+import utilities.AppDriver;
 import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;

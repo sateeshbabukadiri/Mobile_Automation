@@ -18,12 +18,12 @@ import java.time.Duration;
 
 public class BaseObjects {
 
-    public static AppiumDriver driver;
+    protected AppiumDriver driver;
     protected static Logger log;
     protected static WebDriverWait wait;
 
     public BaseObjects() throws MalformedURLException {
-        driver = AppDriver.getCurrentDriver();
+        this.driver = AppDriver.getCurrentDriver();
         log = LogManager.getLogger(this.getClass());
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
@@ -103,13 +103,15 @@ public class BaseObjects {
 
     @Attachment(value = "Screenshot", type = "image/png")
     protected static byte[] captureScreenshot() {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        AppiumDriver currentDriver = AppDriver.getCurrentDriver();
+        return ((TakesScreenshot) currentDriver).getScreenshotAs(OutputType.BYTES);
     }
 
     @Attachment(value = "Page Source", type = "text/plain")
     public static String getPageSource() {
+        AppiumDriver currentDriver = AppDriver.getCurrentDriver();
         try {
-            return driver.getPageSource();
+            return currentDriver.getPageSource();
         } catch (Exception e) {
             log.warn("Failed to get page source: " + e.getMessage());
             return "Failed to capture page source.";

@@ -1,6 +1,6 @@
 package runners;
 
-import StepDefinitions.BaseStepDef;
+import stepdefinitions.BaseStepDef;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.tagexpressions.TagExpressionParser;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
@@ -19,8 +19,8 @@ import java.util.stream.Collectors;
         glue = {"StepDefinitions"},
         plugin = {
                 "pretty",
-                "html:testOutput/cucumberReport/cucumber-reports.html",
-                "json:TestOutput/cucumberReport/CucumberTestReport.json",
+                "html:test-output/cucumberReport/cucumber-reports.html",
+                "json:test-output/cucumberReport/CucumberTestReport.json",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         },
         monochrome = true)

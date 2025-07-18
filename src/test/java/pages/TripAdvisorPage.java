@@ -1,6 +1,6 @@
 package pages;
 
-import Utilities.BaseObjects;
+import utilities.BaseObjects;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.apache.commons.logging.Log;

@@ -1,8 +1,8 @@
 package stepdefinitions;
 
 
-import Pages.TripAdvisorPage;
-import Pages.TripMainPage;
+import pages.TripAdvisorPage;
+import pages.TripMainPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,7 +13,7 @@ import org.testng.Assert;
 
 import java.net.MalformedURLException;
 
-import static Utilities.BaseObjects.logMessage;
+import static utilities.BaseObjects.logMessage;
 
 public class TripAdvisor {
 

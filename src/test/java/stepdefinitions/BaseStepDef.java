@@ -1,8 +1,8 @@
 package stepdefinitions;
 
-import Runners.TestRunner;
-import Utilities.AppDriver;
-import Utilities.AppiumServerManager;
+import runners.TestRunner;
+import utilities.AppDriver;
+import utilities.AppiumServerManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
