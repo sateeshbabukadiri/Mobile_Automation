@@ -15,51 +15,51 @@ import java.util.logging.Logger;
 
 public class AppDriver {
 
-    //    Stores a separate AppiumDriver instance per thread (useful for parallel test execution). Prevents session collisions.
+    //  Stores a separate AppiumDriver instance per thread (useful for parallel test execution). Prevents session collisions.
     private static final ThreadLocal<AppiumDriver> driver = new ThreadLocal<>();
-    //    Implements the singleton pattern — ensures there's only one instance of AppDriver class used globally.
+    //  Implements the singleton pattern — ensures there's only one instance of AppDriver class used globally.
     private static final AppDriver instance = new AppDriver();
-    //    Initializes a logger specific to this class for consistent logging.
+    //  Initializes a logger specific to this class for consistent logging.
     private static final Logger logger = Logger.getLogger(AppDriver.class.getName());
 
-    //    Prevents other classes from instantiating AppDriver directly.
+    //  Prevents other classes from instantiating AppDriver directly.
     private AppDriver() {
         // Private constructor to enforce singleton pattern
     }
 
-    //    Provides global access to the single AppDriver instance.
+    //  Provides global access to the single AppDriver instance.
     public static AppDriver getInstance() {
         return instance;
     }
 
-    //    Gets the current thread-local driver instance.
+    //  Gets the current thread-local driver instance.
     public AppiumDriver getDriver() {
         return driver.get();
     }
 
-    //    Provides static access to the current driver from anywhere.
+    //  Provides static access to the current driver from anywhere.
     public static AppiumDriver getCurrentDriver() {
         return getInstance().getDriver();
     }
 
-    //    Sets the thread-local driver, useful when launching the app.
+    //  Sets the thread-local driver, useful when launching the app.
     public static void setDriver(AppiumDriver driverInstance) {
         driver.set(driverInstance);
         logger.info("Driver is set");
     }
 
-    //    Main method to launch your app on Android or iOS.
+    //  Main method to launch your app on Android or iOS.
     public static void launchApp(String platformName, String remoteHost) throws IOException {
-//    Loads platform-specific capabilities from a JSON file using a helper method.
+    //    Loads platform-specific capabilities from a JSON file using a helper method.
         DesiredCapabilities capabilities = getCapabilities(platformName);
-//     Local reference to hold the new driver instance.
+    //    Local reference to hold the new driver instance.
         AppiumDriver driver;
 
         try {
             if (platformName.equalsIgnoreCase("Android")) {
-                driver = new AndroidDriver(new URL(remoteHost), capabilities);
+                driver = new AndroidDriver(new URL(null, remoteHost), capabilities);
             } else if (platformName.equalsIgnoreCase("iOS")) {
-                driver = new IOSDriver(new URL(remoteHost), capabilities);
+                driver = new IOSDriver(new URL(null, remoteHost), capabilities);
             } else {
                 throw new RuntimeException("Unsupported platform: " + platformName);
             }

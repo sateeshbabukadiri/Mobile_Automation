@@ -1,7 +1,7 @@
 package utilities;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.TouchAction;
+
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
@@ -13,8 +13,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import java.net.MalformedURLException;
 import java.time.Duration;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
+import java.util.Arrays;
 
 public class BaseObjects {
 
@@ -22,7 +24,7 @@ public class BaseObjects {
     protected static Logger log;
     protected static WebDriverWait wait;
 
-    public BaseObjects() throws MalformedURLException {
+    public BaseObjects() {
         this.driver = AppDriver.getCurrentDriver();
         log = LogManager.getLogger(this.getClass());
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
@@ -118,8 +120,34 @@ public class BaseObjects {
         }
     }
 
+    public boolean isAndroid() {
+        return System.getProperty("platformName", "Android").equalsIgnoreCase("Android");
+    }
 
-    public void SwipeUp(){
 
+    public void swipeVertical(AppiumDriver driver, String direction) {
+        int height = driver.manage().window().getSize().height;
+        int width = driver.manage().window().getSize().width;
+    
+        int startX = width / 2;
+        int startY, endY;
+    
+        if ("up".equalsIgnoreCase(direction)) {
+            startY = (int) (height * 0.8);
+            endY = (int) (height * 0.2);
+        } else if ("down".equalsIgnoreCase(direction)) {
+            startY = (int) (height * 0.2);
+            endY = (int) (height * 0.8);
+        } else {
+            throw new IllegalArgumentException("Direction must be 'up' or 'down'");
+        }
+    
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 1);
+        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        swipe.addAction(finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), startX, endY));
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        driver.perform(Arrays.asList(swipe));
     }
 }

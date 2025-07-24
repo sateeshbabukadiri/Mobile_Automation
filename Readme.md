@@ -108,6 +108,17 @@ Command - npm install -g appium
 - Jira and TestRail/Zephyr Integration: Integrate with Jira and TestRail/Zephyr to log test execution status automatically, improving traceability and test management.
 - Jenkins Integration: Set up Jenkins to run scripts on remote devices, enabling continuous integration and delivery (CI/CD) and ensuring tests are run in a controlled and scalable environment.
 
-Repo URL: `` and  
-Repo Directory `` 
+//Framework breakdown
+
+ A[Start Test (mvn/testng/IDE)] --> B[TestNg.xml loads TestRunner]
+    B --> C[Cucumber scans features & glue]
+    C --> D[BeforeClass: Set platform/tags/host]
+    D --> E[Before Hook: Start Appium, Launch App, Init Driver]
+    E --> F[Scenario Steps: StepDefinitions call Page Objects]
+    F --> G[Page Objects interact with App via Driver]
+    G --> H[After Hook: Log result, Quit Driver, Stop Appium]
+    H --> I[AfterClass: Cleanup]
+    I --> J[Listeners/Allure: Attach logs/screenshots]
+    J --> K[Reports generated in test-output/]
+
 

@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = {"StepDefinitions"},
+        glue = {"stepdefinitions"},
         plugin = {
                 "pretty",
                 "html:test-output/cucumberReport/cucumber-reports.html",
